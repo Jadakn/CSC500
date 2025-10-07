@@ -3,4 +3,7 @@ num2 = input("Enter the second number: ")
 print("The sum is:", float(num1) + float(num2))
 print("The difference is:", float(num1) - float(num2))
 print("The product is:", float(num1) * float(num2))
-print("The quotient is:", float(num1) / float(num2))
+try:
+    print("The quotient is:", float(num1) / float(num2))
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero.")
