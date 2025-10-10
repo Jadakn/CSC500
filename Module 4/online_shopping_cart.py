@@ -11,7 +11,7 @@ class ItemToPurchase:
 
     def print_item_cost(self):
         total_cost = self.item_price * self.item_quantity
-        print(self.item_name, self.item_quantity, "@ $", self.item_price, "= $", total_cost)
+        print(self.item_name, self.item_quantity, "@ $", format(self.item_price, '.2f'), "= $", format(total_cost, '.2f'))
 
 if __name__ == "__main__":
     print("Item 1")
@@ -50,5 +50,4 @@ if __name__ == "__main__":
     item1.print_item_cost()
     item2.print_item_cost()
     total_cost = item1.item_price * item1.item_quantity + item2.item_price * item2.item_quantity
-    print("Total: $", total_cost)
-
+    print("Total: $", format(total_cost, '.2f'))
