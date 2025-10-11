@@ -1,14 +1,16 @@
 try:
-    food_charge = float(input("Enter how much you were charged for the food in dollars: $"))
-    if food_charge < 0:
+    charge_for_just_food = float(input("Please enter how much you were charged for the food in dollars: $"))
+    if charge_for_just_food < 0:
         raise ValueError
 except ValueError:
     print("Error: Please enter a positive numeric float (decimal) value for the food charge.")
     exit()
-tip = food_charge * 0.18
-tax = food_charge * 0.07
-total = food_charge + tip + tax
-print(f"Food charge: ${food_charge:.2f}")
-print(f"Tip (18%): ${tip:.2f}")
-print(f"Sales tax (7%): ${tax:.2f}")
-print(f"Total price: ${total:.2f}")
+
+tip_charge = charge_for_just_food * 0.18
+tax_charge = charge_for_just_food * 0.07
+total_charge = charge_for_just_food + tip_charge + tax_charge
+
+print("Food charge: ${:.2f}".format(charge_for_just_food))
+print("Tip (18%): ${:.2f}".format(tip_charge))
+print("Sales tax (7%): ${:.2f}".format(tax_charge))
+print("Total price: ${:.2f}".format(total_charge))
