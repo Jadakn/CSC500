@@ -12,4 +12,4 @@ except ValueError as err:
         print(f"Error: {err}")
     exit()
 time_for_alarm = (present_time + hours_until_alarm) % 24
-print("The alarm will go off at the following time:", time_for_alarm, ":00")
+print("The alarm will go off at the following time: " + str(time_for_alarm) + ":00")
