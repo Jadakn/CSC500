@@ -23,9 +23,10 @@ fast_point_check_dict = {
     7 : 30
 }
 
-num_books_purchased = get_num_books_purchased_from_input()
-num_points_awarded = 60
-if num_books_purchased in fast_point_check_dict:
-    num_points_awarded = fast_point_check_dict[num_books_purchased]
+if __name__ == "__main__":
+    num_books_purchased = get_num_books_purchased_from_input()
+    num_points_awarded = 60
+    if num_books_purchased in fast_point_check_dict:
+        num_points_awarded = fast_point_check_dict[num_books_purchased]
 
-print('Congradulations! You have been awarded', num_points_awarded, 'points!')
+    print('Congradulations! You have been awarded', num_points_awarded, 'points!')
