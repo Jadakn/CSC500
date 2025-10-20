@@ -15,39 +15,40 @@ class ItemToPurchase:
 
 if __name__ == "__main__":
     print("Item 1")
-    item1_name = input("Enter the item name:\n")
+    first_item_name = input("Enter the item name:\n")
     try:
-        item1_price = float(input("Enter the item price:\n"))
+        first_item_price = float(input("Enter the item price:\n"))
     except ValueError:
         print("Error: Please enter a valid float value for the item price.")
         exit()
     try:
-        item1_quantity = int(input("Enter the item quantity:\n"))
-        if item1_quantity < 0:
+        first_item_quantity = int(input("Enter the item quantity:\n"))
+        if first_item_quantity < 0:
             raise ValueError
     except ValueError:
         print("Error: Please enter a valid positive integer value for the item quantity.")
         exit()
-    item1 = ItemToPurchase(item1_name, item1_price, item1_quantity)
+    first_item = ItemToPurchase(first_item_name, first_item_price, first_item_quantity)
 
     print("\nItem 2")
-    item2_name = input("Enter the item name:\n")
+    second_item_name = input("Enter the item name:\n")
     try:
-        item2_price = float(input("Enter the item price:\n"))
+        second_item_price = float(input("Enter the item price:\n"))
     except ValueError:
         print("Error: Please enter a valid float value for the item price.")
         exit()
     try:
-        item2_quantity = int(input("Enter the item quantity:\n"))
-        if item2_quantity < 0:
+        second_item_quantity = int(input("Enter the item quantity:\n"))
+        if second_item_quantity < 0:
             raise ValueError
     except ValueError:
         print("Error: Please enter a valid positive integer value for the item quantity.")
         exit()
-    item2 = ItemToPurchase(item2_name, item2_price, item2_quantity)
+    second_item = ItemToPurchase(second_item_name, second_item_price, second_item_quantity)
 
-    print("\nTOTAL COST")
-    item1.print_item_cost()
-    item2.print_item_cost()
-    total_cost = item1.item_price * item1.item_quantity + item2.item_price * item2.item_quantity
+    print('')
+    print("TOTAL COST")
+    first_item.print_item_cost()
+    second_item.print_item_cost()
+    total_cost = first_item.item_price * first_item.item_quantity + second_item.item_price * second_item.item_quantity
     print("Total: $", format(total_cost, '.2f'))
