@@ -29,7 +29,7 @@ class ShoppingCart:
     def remove_item(self, i):
         for item in self.cart_items:
             if item.item_name == i:
-                self.cart_items.remove(i)
+                self.cart_items.remove(item)
                 return
         print("Item not found in cart. Nothing removed.")
 
@@ -104,7 +104,7 @@ class ShoppingCart:
                 except ValueError:
                     print("Error: Please enter a valid item name and quantity.")
                     continue
-                modified_item = ItemToPurchase()
+                modified_item = ItemToPurchase(item_name, 0.0, new_quantity, "none")
                 for i in cart.cart_items:
                     if i.item_name == item_name:
                         modified_item = ItemToPurchase(item_name, i.item_price, new_quantity, i.description)
