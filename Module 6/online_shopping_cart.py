@@ -95,15 +95,11 @@ class ShoppingCart:
                 item_to_add = ItemToPurchase(item_name, item_price, item_quantity, description)
                 cart.add_item(item_to_add)
             elif choice == 'r':
-                try:
-                    item_name = input("Enter name of item to remove: ")
-                    cart.remove_item(item_name)
-                except ValueError:
-                    print("Error: Please enter a valid item name.")
-                    continue
+                item_name = input("Enter name of item to remove: ")
+                cart.remove_item(item_name)
             elif choice == 'c':
+                item_name = input("Enter the item name: ")
                 try:
-                    item_name = input("Enter the item name: ")
                     new_quantity = int(input("Enter the new quantity: "))
                 except ValueError:
                     print("Error: Please enter a valid item name and quantity.")
