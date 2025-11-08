@@ -22,10 +22,14 @@ course_to_times_dict = {
     "COM241": "1:00 p.m."
 }
 
-while True:
+exit = False
+while not exit:
     while True:
         try:
-            course = input("Enter a course number (ex: CSC101): ")
+            course = input("Enter a course number (ex: CSC101), or 'exit' to quit: ")
+            if course == 'exit':
+                exit = True
+                break
             if course not in course_to_room_number_dict:
                 print("Course not found. Please enter a valid course number.")
                 continue
