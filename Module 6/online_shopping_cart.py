@@ -1,5 +1,3 @@
-from datetime import datetime
-
 class ItemToPurchase:
     def __init__(self):
         self.item_name = "none"
@@ -15,7 +13,7 @@ class ItemToPurchase:
 
     def print_item_cost(self):
         total_cost = self.item_price * self.item_quantity
-        print(self.item_name, self.item_quantity, "@ $", format(self.item_price, '.2f'), "= $", format(total_cost, '.2f'))
+        print(self.item_name, self.item_quantity, "@ $" + format(self.item_price, '.2f'), "= $" + format(total_cost, '.2f'))
 
 class ShoppingCart:
     def __init__(self, customer_name="none", current_date="January 1, 2020"):
@@ -61,7 +59,7 @@ class ShoppingCart:
             for i in self.cart_items:
                 i.print_item_cost()
             total_cost = self.get_cost_of_cart()
-            print("Total: $", format(total_cost, '.2f'))
+            print("Total: $" + format(total_cost, '.2f'))
 
     def print_descriptions(self):
         print(self.customer_name, "'s Shopping Cart - ", self.current_date, sep='')
@@ -118,13 +116,23 @@ def print_menu(cart):
             print("Invalid option, please select a valid menu option below.")
 
 if __name__ == "__main__":
-    try:
-        customer_name = input("Enter customer name: ")
-    except ValueError:
-        print("Error: Please enter a valid customer name.")
-        exit()
-    
-    current_date = datetime.now().strftime("%B %d, %Y")
+    while True:
+        try:
+            customer_name = input("Enter customer name: ")
+            break
+        except ValueError:
+            print("Error: Please enter a valid customer name.")
+            continue
+    while True:
+        try:
+            current_date = input("Enter today's date: ")
+            break
+        except ValueError:
+            print("Error: Please enter a valid date.")
+            continue
+    print("Customer name:", customer_name)
+    print("Today's date:", current_date)
+            
     cart = ShoppingCart(customer_name, current_date)
     # cart.add_item(ItemToPurchase("Nike Romaleos", 189.0, 2, "Volt color, Weightlifting shoes"))
     # cart.add_item(ItemToPurchase("Chocolate Chips", 3.0, 5, "Semi-sweet"))
