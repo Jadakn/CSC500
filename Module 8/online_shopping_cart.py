@@ -154,6 +154,7 @@ if __name__ == "__main__":
     # cart.add_item(ItemToPurchase("Nike Romaleos", 189.0, 2, "Volt color, Weightlifting shoes"))
     # cart.add_item(ItemToPurchase("Chocolate Chips", 3.0, 5, "Semi-sweet"))
     # cart.add_item(ItemToPurchase("Powerbeats 2 Headphones", 128.0, 1, "Bluetooth headphones"))
+    print_menu(cart)
     cart.print_total()
     cart.print_descriptions()
 
