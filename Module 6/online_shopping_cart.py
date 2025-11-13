@@ -69,53 +69,53 @@ class ShoppingCart:
         for i in self.cart_items:
             print(i.item_name, ":", i.description)
 
-    def print_menu(cart):
-        options = (
-            "MENU\n"
-            "a - Add item to cart\n"
-            "r - Remove item from cart\n"
-            "c - Change item quantity\n"
-            "i - Output items' descriptions\n"
-            "o - Output shopping cart\n"
-            "q - Quit\n"
-        )
-        choice = ''
-        while choice != 'q':
-            print(options)
-            choice = input("Choose an option:\n")
-            if choice == 'a':
-                try:
-                    item_name = input("Enter the item name: ")
-                    item_price = float(input("Enter the item price: "))
-                    item_quantity = int(input("Enter the item quantity: "))
-                    description = input("Enter the item description: ")
-                except ValueError:
-                    print("Error: Strings are required for description and item name. An integer value required for quantity. A float value is required for price.")
-                    continue
-                item_to_add = ItemToPurchase(item_name, item_price, item_quantity, description)
-                cart.add_item(item_to_add)
-            elif choice == 'r':
-                item_name = input("Enter name of item to remove: ")
-                cart.remove_item(item_name)
-            elif choice == 'c':
+def print_menu(cart):
+    options = (
+        "MENU\n"
+        "a - Add item to cart\n"
+        "r - Remove item from cart\n"
+        "c - Change item quantity\n"
+        "i - Output items' descriptions\n"
+        "o - Output shopping cart\n"
+        "q - Quit\n"
+    )
+    choice = ''
+    while choice != 'q':
+        print(options)
+        choice = input("Choose an option:\n")
+        if choice == 'a':
+            try:
                 item_name = input("Enter the item name: ")
-                try:
-                    new_quantity = int(input("Enter the new quantity: "))
-                except ValueError:
-                    print("Error: Please enter a valid item name and quantity.")
-                    continue
-                modified_item = ItemToPurchase(item_name, 0.0, new_quantity, "none")
-                for i in cart.cart_items:
-                    if i.item_name == item_name:
-                        modified_item = ItemToPurchase(item_name, i.item_price, new_quantity, i.description)
-                        break
-                cart.modify_item(modified_item)
-            elif choice == 'i':
-                cart.print_descriptions()
-            elif choice == 'o':
-                cart.print_total()
-            elif choice != 'q':
-                print("Invalid option, please select a valid menu option below.")
+                item_price = float(input("Enter the item price: "))
+                item_quantity = int(input("Enter the item quantity: "))
+                description = input("Enter the item description: ")
+            except ValueError:
+                print("Error: Strings are required for description and item name. An integer value required for quantity. A float value is required for price.")
+                continue
+            item_to_add = ItemToPurchase(item_name, item_price, item_quantity, description)
+            cart.add_item(item_to_add)
+        elif choice == 'r':
+            item_name = input("Enter name of item to remove: ")
+            cart.remove_item(item_name)
+        elif choice == 'c':
+            item_name = input("Enter the item name: ")
+            try:
+                new_quantity = int(input("Enter the new quantity: "))
+            except ValueError:
+                print("Error: Please enter a valid item name and quantity.")
+                continue
+            modified_item = ItemToPurchase(item_name, 0.0, new_quantity, "none")
+            for i in cart.cart_items:
+                if i.item_name == item_name:
+                    modified_item = ItemToPurchase(item_name, i.item_price, new_quantity, i.description)
+                    break
+            cart.modify_item(modified_item)
+        elif choice == 'i':
+            cart.print_descriptions()
+        elif choice == 'o':
+            cart.print_total()
+        elif choice != 'q':
+            print("Invalid option, please select a valid menu option below.")
 
 if __name__ == "__main__":
     try:
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     # cart.add_item(ItemToPurchase("Nike Romaleos", 189.0, 2, "Volt color, Weightlifting shoes"))
     # cart.add_item(ItemToPurchase("Chocolate Chips", 3.0, 5, "Semi-sweet"))
     # cart.add_item(ItemToPurchase("Powerbeats 2 Headphones", 128.0, 1, "Bluetooth headphones"))
-    ShoppingCart.print_menu(cart)
+    print_menu(cart)
     cart.print_total()
     cart.print_descriptions()
 
