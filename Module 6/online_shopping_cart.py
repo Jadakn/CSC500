@@ -1,16 +1,9 @@
 class ItemToPurchase:
-    def __init__(self):
-        self.item_name = "none"
-        self.item_price = 0.0
-        self.item_quantity = 0
-        self.description = "none"
-
-    def __init__(self, item_name, item_price, item_quantity, description):
+    def __init__(self, item_name="none", item_price=0.0, item_quantity=0, description="none"):
         self.item_name = item_name
         self.item_price = item_price
         self.item_quantity = item_quantity
         self.description = description
-
     def print_item_cost(self):
         total_cost = self.item_price * self.item_quantity
         print(self.item_name, self.item_quantity, "@ $" + format(self.item_price, '.2f'), "= $" + format(total_cost, '.2f'))
