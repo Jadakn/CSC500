@@ -67,7 +67,7 @@ def print_menu(cart):
         "MENU\n"
         "a - Add item to cart\n"
         "r - Remove item from cart\n"
-        "c - Change item quantity\n"
+        "c - Change an item's description, price, or quantity\n"
         "i - Output items' descriptions\n"
         "o - Output shopping cart\n"
         "q - Quit\n"
@@ -90,13 +90,43 @@ def print_menu(cart):
         elif choice == 'r':
             item_name = input("Enter name of item to remove: ")
             cart.remove_item(item_name)
-        elif choice == 'c':
+        elif choice == 'c': 
             item_name = input("Enter the item name: ")
-            try:
-                new_quantity = int(input("Enter the new quantity: "))
-            except ValueError:
-                print("Error: Please enter a valid item name and quantity.")
-                continue
+            while True: 
+                modify_type = input("Modify description, price, and/or quantity. e to exit (d/p/q/e): ")
+                if modify_type == 'd':
+                    new_description = input("Enter the new description: ")
+                    modified_item = ItemToPurchase(item_name, 0.0, 0, new_description)
+                    for i in cart.cart_items:
+                        if i.item_name == item_name:
+                            modified_item = ItemToPurchase(item_name, i.item_price, i.item_quantity, new_description)
+                            break
+                    cart.modify_item(modified_item)
+                    continue
+                elif modify_type == 'p':
+                    try:
+                        new_price = float(input("Enter the new price: "))
+                    except ValueError:
+                        print("Error: Please enter a valid item name and price.")
+                        continue
+                    modified_item = ItemToPurchase(item_name, new_price, 0, "none")
+                    for i in cart.cart_items:
+                        if i.item_name == item_name:
+                            modified_item = ItemToPurchase(item_name, new_price, i.item_quantity, i.description)
+                            break
+                    cart.modify_item(modified_item)
+                    continue
+                elif modify_type == 'q':
+                    try:
+                        new_quantity = int(input("Enter the new quantity: "))
+                    except ValueError:
+                        print("Error: Please enter a valid item name and quantity.")
+                        continue
+                elif modify_type == 'e':
+                    break
+                else:
+                    print("Invalid option, please select a valid modification option.")
+                    continue
             modified_item = ItemToPurchase(item_name, 0.0, new_quantity, "none")
             for i in cart.cart_items:
                 if i.item_name == item_name:
