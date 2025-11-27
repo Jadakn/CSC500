@@ -25,14 +25,19 @@ class ShoppingCart:
         print("Item not found in cart. Nothing removed.")
 
     def modify_item(self, i):
+        found = False
         for item in self.cart_items:
             if item.item_name == i.item_name:
-                if i.description != "none" and i.item_price != 0.0 and i.item_quantity != 0:
+                if i.description != "none":
                     item.description = i.description
+                if i.item_price != 0.0:
                     item.item_price = i.item_price
+                if i.item_quantity != 0:
                     item.item_quantity = i.item_quantity
-            return
-        print("Item not found in cart. Nothing modified.")
+                found = True
+                break
+        if not found:
+            print("Item not found in cart. Nothing modified.")
 
     def get_num_items_in_cart(self):
         num_items = sum(i.item_quantity for i in self.cart_items)
